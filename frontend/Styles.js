@@ -49,14 +49,28 @@ const styles = StyleSheet.create({
         gap: '.3rem',
     },
     link: {
-        color: "#fff",
+        color: "#876431",
         textDecorationLine: "underline",
         marginTop: "-1.3rem",
-        marginBottom: '3rem',
+        marginBottom: '1rem',
     },
     alignLink: {
         width: "16rem",
         alignItems: "flex-start"
+    },
+    primaryButton: { 
+        backgroundColor: "#E79E29", 
+        padding: 8, 
+        borderRadius: 7 
+    },
+    secondaryButton: { 
+        backgroundColor: "#876431", 
+        padding: 8, 
+        borderRadius: 7,
+    },
+    buttonText: {
+        fontSize: 22,
+        fontWeight: "600",
     }
 });
 

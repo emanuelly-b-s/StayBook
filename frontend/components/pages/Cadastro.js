@@ -31,8 +31,8 @@ export default function Cadastro(props) {
                 <StyledInput name={"Password"} value={password} set={setPassword}/>
                 <StyledInput name={"Confirm Password"} value={confirmPassword} set={setConfirmPassword}/>
             </View>
-            <TouchableOpacity style={{ backgroundColor: "#E79E29", padding: 8, borderRadius: 7 }} onPress={() => RegisterUser()}><Text style={{ fontSize: 22 }}>Sign Up</Text></TouchableOpacity>
-            <TouchableOpacity style={{ backgroundColor: "#876431", padding: 8, borderRadius: 7 }} onPress={() => ToLogin()}><Text style={{ fontSize: 22 }}>Log In</Text></TouchableOpacity>
+            <TouchableOpacity style={styles.primaryButton} onPress={() => RegisterUser()}><Text style={styles.buttonText}>Sign Up</Text></TouchableOpacity>
+            <TouchableOpacity style={styles.secondaryButton} onPress={() => ToLogin()}><Text style={styles.buttonText}>Log In</Text></TouchableOpacity>
         </View >
     )
 }

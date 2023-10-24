@@ -23,8 +23,8 @@ export default function Login(props) {
             <View style={styles.alignLink}>
                 <Text style={styles.link}>Forgot your password?</Text>
             </View>
-            <TouchableOpacity style={{ backgroundColor: "#E79E29", padding: 8, borderRadius: 7 }} onPress={() => ToLogin()}><Text style={{ fontSize: 22 }}>Log In</Text></TouchableOpacity>
-            <TouchableOpacity style={{ backgroundColor: "#876431", padding: 8, borderRadius: 7 }} onPress={() => props.navigation.navigate('cadastro')}><Text style={{ fontSize: 22 }}>Sign Up</Text></TouchableOpacity>
+            <TouchableOpacity style={styles.primaryButton} onPress={() => ToLogin()}><Text style={styles.buttonText}>Log In</Text></TouchableOpacity>
+            <TouchableOpacity style={styles.secondaryButton} onPress={() => props.navigation.navigate('cadastro')}><Text style={styles.buttonText}>Sign Up</Text></TouchableOpacity>
         </View >
     )
 }
