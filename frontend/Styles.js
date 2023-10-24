@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         padding: '.2rem',
         backgroundColor: '#000',
         fontSize: '1.2rem',
-        width: '16rem', 
+        width: '16rem',
     },
     wrapInput: {
         backgroundColor: '#fff',
@@ -47,7 +47,17 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         flexDirection: 'row',
         gap: '.3rem',
+    },
+    link: {
+        color: "#fff",
+        textDecorationLine: "underline",
+        marginTop: "-1.3rem",
+        marginBottom: '3rem',
+    },
+    alignLink: {
+        width: "16rem",
+        alignItems: "flex-start"
     }
-  });
+});
 
-export {styles};
+export { styles };
