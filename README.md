@@ -1,5 +1,33 @@
-# Reservation-Systems-Hotel
+# Reservation Hotel System
+
+![Logo](https://github.com/emanuelly-b-s/Reservation-Systems-Hotel/blob/main/frontend/assets/logo.png)
+
+## Description
+
+Stay Book is a mobile application designed to book hotel rooms in an easy and intuitive way.
+The application is made using react native for the frontend and nodejs for the backend, mongodb is also used as a database for the project and jwt for data validation and encryption.## Documentation
+
+#### Install Dependencies
+
+```
+    npm install
+```
+
+#### Start Project
+
+```
+    npx expo start
+```
 
 
-Figma:
-https://www.figma.com/file/C1tbOsJ6RkFcd9IiVwERDq/StayBook?type=design&node-id=0%3A1&mode=design&t=EENO6ANqgxMt6kt1-1
+## References
+
+ - [Figma](https://www.figma.com/file/C1tbOsJ6RkFcd9IiVwERDq/StayBook?type=design&node-id=0%3A1&mode=design&t=EENO6ANqgxMt6kt1-1)
+
+
+## Authors
+
+- [@emanuelly-b-s](https://github.com/emanuelly-b-s)
+- [@NycollasSobolevski](https://github.com/NycollasSobolevski)
+- [@Hemershow](https://github.com/Hemershow)
+- [@FelipeTakiguchi](https://github.com/FelipeTakiguchi)
