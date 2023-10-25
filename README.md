@@ -1,7 +1,7 @@
 # Reservation Hotel System
 
-<p align="center">
-![Logo](https://github.com/emanuelly-b-s/Reservation-Systems-Hotel/blob/main/frontend/assets/logo.png)
+<p align="center"> 
+    <img width="400" src="https://github.com/emanuelly-b-s/Reservation-Systems-Hotel/blob/main/frontend/assets/logo.png" alt="Logo">
 </p>
 
 ## Description
