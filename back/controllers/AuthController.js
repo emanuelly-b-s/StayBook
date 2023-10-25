@@ -1,9 +1,7 @@
 const User = require('../models/User');
-const Token = require('../models/Token');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-var crypto = require('crypto');
-var nodemailer = require('nodemailer');
+
 require('dotenv').config();
 
 class AuthController{
@@ -23,14 +21,6 @@ class AuthController{
             validated: false
         });
 
-        var tokenCode = crypto.randomBytes(64).toString('hex');
-        
-        const token = new Token({
-            code: tokenCode,
-            expires: Date.now() + 300000,
-            user: username 
-        });
-
         if (await User.findOne({ "email": email }).Count > 0)
             return res.status(400)
                 .send({ message: "Email already in use" })
@@ -41,7 +31,6 @@ class AuthController{
 
         try {
             await user.save();
-            await token.save();
             return res.status(201).send({ message: "User created successfully" });
         } catch (error) {
             return res.status(500).send({ message: "Something failed" })
