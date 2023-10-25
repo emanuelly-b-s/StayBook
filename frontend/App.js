@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import Login from './components/pages/Login';
-import Cadastro from './components/pages/Cadastro';
+import Login from './src/screens/Login';
+import Cadastro from './src/screens/Cadastro';
 import { UsersProvider } from './context/UserContext.js';
 import { useState } from 'react';
 
