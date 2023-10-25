@@ -1,26 +1,47 @@
 const User = require('../models/User');
+const Token = require('../models/Token');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+var crypto = require('crypto');
+var nodemailer = require('nodemailer');
 require('dotenv').config();
 
 class AuthController{
     static async register(req, res){
-        const { name, email, password } = req.body;
+        const { username, email, password } = req.body;
 
         const passwordHash = await bcrypt.hash(password, 12)
 
-        if(!name || !email || !password) 
+        if(!username || !email || !password) 
             return res.status(400)
-                .send({ message: "Name or email or password not provider" })
-                
+                .send({ message: "Name, email or password not provided" })
+
 		const user = new User({
-            name,
-            email,
+            username: username,
+            email: email,
             password: passwordHash,
+            validated: false
         });
+
+        var tokenCode = crypto.randomBytes(64).toString('hex');
+        
+        const token = new Token({
+            code: tokenCode,
+            expires: Date.now() + 300000,
+            user: username 
+        });
+
+        if (await User.findOne({ "email": email }).Count > 0)
+            return res.status(400)
+                .send({ message: "Email already in use" })
+
+        if (await User.findOne({ "username": username }).Count > 0)
+            return res.status(400)
+                .send({ message: "Username already in use" })
 
         try {
             await user.save();
+            await token.save();
             return res.status(201).send({ message: "User created successfully" });
         } catch (error) {
             return res.status(500).send({ message: "Something failed" })
@@ -32,7 +53,7 @@ class AuthController{
 
         if(!email || !password) 
             return res.status(400)
-                .send({ message: "Email or password not provider" })
+                .send({ message: "Email or password not provided" })
 
         try {
             const user = await User.findOne({ email })
@@ -44,13 +65,12 @@ class AuthController{
             const secret = process.env.SECRET;
             const token = jwt.sign(
                 {
-                    id: user._id,
+                    id: user._id
                 },
                 secret,
                 {
                     expiresIn: '2 days'
                 }
-                
             );
             return res.status(200).send({token: token})
         } catch (error) {

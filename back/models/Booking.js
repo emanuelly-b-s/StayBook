@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Booking = mongoose.model('User', {
+const Booking = mongoose.model('Booking', {
 
     start_date: Date,
     end_date: Date,
