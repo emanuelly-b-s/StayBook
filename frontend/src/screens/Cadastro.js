@@ -2,7 +2,7 @@ import { View, Image, Text, TouchableOpacity } from "react-native";
 import { styles } from "../../Styles";
 import { useContext, useState } from "react";
 import { usersContext } from "../../context/UserContext";
-import StyledInput from "../StyledInput";
+import StyledInput from "../components/StyledInput";
 
 export default function Cadastro(props) {
     const [username, setUsername] = useState("");
