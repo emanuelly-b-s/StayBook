@@ -1,3 +1,3 @@
 {
-    "db": "mongodb://127.0.0.1:27017/test"
+    "db": "mongodb+srv://hemersonviolin:9CuSLg3NEfBinhje@cluster0.zsjoebn.mongodb.net/test"
 }

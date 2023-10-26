@@ -22,4 +22,14 @@ http://localhost:8080/api/token/compare
     "jwtUser":  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2E5Y2MzYjlhYTAzZmZkNDk3Yzc0NiIsImlhdCI6MTY5ODM0MDA2MywiZXhwIjoxNjk4NTEyODYzfQ.G0gH-hNhJeT_-d7wckB2SA4F7lxJIMSKc_S2WSKU0NE"
 }
 
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2FhMDM3YWM1OTc2NjAwNDBkYzFkZiIsImlhdCI6MTY5ODM0MDkyOCwiZXhwIjoxNjk4NTEzNzI4fQ.wAFLMrHc385XCkwzyGjXun3tWLFx7QqzPh5Kp7Lu8CA
+http://localhost:8080/api/bedroom/
+{
+    "capacity": 3,
+    "category": ["luxo"],
+    "numberBeds": {
+        doubleBed: 1,
+        singleBed: 1
+    },
+    hotel : "Maresia",
+    wifi: ["bedroom"]
+}
