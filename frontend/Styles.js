@@ -20,10 +20,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '45%',
         gap: '1rem',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginBottom: 30
     },
     font: {
-        color: '#fff',
+        color: '#876431',
         fontSize: 14,
     },
     textInput: {

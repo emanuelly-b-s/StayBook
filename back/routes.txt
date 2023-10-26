@@ -10,3 +10,15 @@ http://localhost:8080/api/auth/register
     "email": "lastname",
     "password": "blabla"
 }
+
+http://localhost:8080/api/bedroom/
+{
+    "capacity": 3,
+    "category": ["luxo"],
+    "numberBeds": {
+        doubleBed: 1,
+        singleBed: 1
+    },
+    hotel : "Maresia",
+    wifi: ["bedroom"]
+}
