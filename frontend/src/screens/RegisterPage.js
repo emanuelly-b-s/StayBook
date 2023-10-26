@@ -14,7 +14,7 @@ export default function Cadastro(props) {
     function RegisterUser() {
         // var res = addUser();
         // if (res != null)
-            props.navigation.navigate("login");
+            props.navigation.navigate("confirm");
     }
 
     function ToLogin() {

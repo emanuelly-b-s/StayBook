@@ -14,7 +14,7 @@ export default function RoomCard(params) {
                 <View>
                     <Text style={styles.title}>Pousada em algum lugar do mundo</Text>
                     <Text style={styles.title}>São Paulo</Text>
-                    <FontAwesomeIcon icon={ faMugSaucer } />
+                    <FontAwesomeIcon icon="fa-solid fa-star" />
                 </View>
                 
             </View>
