@@ -32,6 +32,10 @@ class BedroomController {
             return res.status(500).send({ error: "Failed" });
         };
     }
+
+    static async GetAll(req, res){
+
+    }
 }
 
 module.exports = BedroomController;
