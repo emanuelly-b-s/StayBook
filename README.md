@@ -7,7 +7,9 @@
 ## Description
 
 Stay Book is a mobile application designed to book hotel rooms in an easy and intuitive way.
-The application is made using react native for the frontend and nodejs for the backend, mongodb is also used as a database for the project and jwt for data validation and encryption.## Documentation
+The application is made using react native for the frontend and nodejs for the backend, mongodb is also used as a database for the project and jwt for data validation and encryption.
+
+## Documentation
 
 #### Install Dependencies
 
