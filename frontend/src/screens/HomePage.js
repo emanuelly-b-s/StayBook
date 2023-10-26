@@ -1,6 +1,9 @@
 import { View, Text, StyleSheet } from "react-native"
 import RoomCard from "../components/RoomCard"
 import Nav from "../components/Nav"
+import Filters from "../components/Filters"
+
+
 export default function HomePage(params) {
     
     return (
@@ -8,6 +11,7 @@ export default function HomePage(params) {
             <Nav />
             <RoomCard></RoomCard>
             <RoomCard></RoomCard>
+            <Filters />
         </View>
     )
 }
