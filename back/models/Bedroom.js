@@ -7,7 +7,6 @@ const Bedroom = mongoose.model('Bedroom', {
         doubleBed: Number,
         singleBed: Number
     },
-    category: [],
     kitchen: Boolean,
     wifi: [], //area comum, quarto
     washer: Boolean,
@@ -16,4 +15,4 @@ const Bedroom = mongoose.model('Bedroom', {
     moreInformations: String
 });
 
-module.exports = Person;
+module.exports = Bedroom;
