@@ -1,4 +1,4 @@
-# Reservation Hotel System
+# Stay Book
 
 <p align="center"> 
     <img width="400" src="https://github.com/emanuelly-b-s/Reservation-Systems-Hotel/blob/main/frontend/assets/logo.png" alt="Logo">
