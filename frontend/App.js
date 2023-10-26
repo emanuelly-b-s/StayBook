@@ -6,6 +6,10 @@ import { UsersProvider } from './context/UserContext.js';
 import { useState } from 'react';
 import HomePage from './src/screens/HomePage';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
+library.add(fas);
 
 export default function App() {
   const Stack = createStackNavigator();
