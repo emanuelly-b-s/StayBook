@@ -1,5 +1,6 @@
-import { Image, View,StyleSheet } from "react-native"
+import { Image, View,StyleSheet, Text } from "react-native"
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
+import { faMugSaucer } from '@fortawesome/free-solid-svg-icons/faMugSaucer'
 
 export default function RoomCard(params) {
     
@@ -13,7 +14,7 @@ export default function RoomCard(params) {
                 <View>
                     <Text style={styles.title}>Pousada em algum lugar do mundo</Text>
                     <Text style={styles.title}>São Paulo</Text>
-                    <FontAwesomeIcon icon="faMugSaucer" />
+                    <FontAwesomeIcon icon={ faMugSaucer } />
                 </View>
                 
             </View>
