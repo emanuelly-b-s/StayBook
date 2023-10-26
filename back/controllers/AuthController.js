@@ -47,9 +47,9 @@ class AuthController{
         try {
             const user = await User.findOne({ email })
             if(!user)
-                return res.status(400).send({ message: "Invalid Email or password" })
+                return res.status(400).send({ message: "Invalid Email" })
             if(!await bcrypt.compare(password, user.password)){
-                return res.status(400).send({ message: "Invalid Email or password" })
+                return res.status(400).send({ message: "Invalid password" })
             }
             const secret = process.env.SECRET;
             const token = jwt.sign(
@@ -61,7 +61,7 @@ class AuthController{
                     expiresIn: '2 days'
                 }
             );
-            return res.status(200).send({token: token})
+            return res.status(200).send({ token: token })
         } catch (error) {
             return res.status(500).send({ message: "Something failed" })
         }

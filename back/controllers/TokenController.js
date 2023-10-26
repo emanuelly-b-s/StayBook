@@ -1,36 +1,61 @@
 const Token = require('../models/Token');
 const User = require('../models/User');
 var crypto = require('crypto');
-var nodemailer = require('nodemailer');
-const Token = require('../models/Token');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+// const sendmail = require('sendmail');
+const nodemailer = require('nodemailer');
 require('dotenv').config();
-
-const tokenValidationTimer = 300000;
 
 class TokenController{
     static async CreateToken(req, res){
-        const secret = process.env.SECRET;
+        const { jwtUser } = req.body;
 
-        const { jwt } = req.body;
-
-        if(!jwt) 
+        if(!jwtUser) 
             return res.status(400)
                 .send({ message: "Jwt not provided" })
         
-        var user = jwt.verify(jwt, secret);
-
-        var tokenCode = Math.floor(Math.random() * (max - min + 1)) + min;
-        // send email
+        const secret = process.env.SECRET;
+        const email = process.env.EMAIL;
+        const password = process.env.PASSWORD;
+        const tokenValidationTimer = 300000;
+        var transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: email,
+                pass: password
+            }
+            });
+        var user = jwt.verify(jwtUser, secret);
+        var currentUser = await User.findById(user.id);
+        var tokenCode = (Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000).toString();
         var safeCode = await bcrypt.hash(tokenCode, 12)
-
+        var mailOptions = {
+            from: email,
+            to: currentUser.email,
+            subject: 'Confirmation code',
+            text: tokenCode
+        }
         const token = new Token({
             code: safeCode,
             expires: Date.now() + tokenValidationTimer,
             user: user.id 
         });
+        
+        try {
+            await transporter.sendMail(mailOptions, function(error, info) {
+                if(error)
+                {
+                    console.log(error)
+                }
+            });
+            
+        } catch (error) {
+            return res.status(500).send({ message: "Error while trying to send email"});
+        }
 
         try {
+            await Token.deleteMany({ "user": user.id });
             await token.save();
             return res.status(201).send({ message: "Token created successfully" });
         } catch (error) {
@@ -40,19 +65,20 @@ class TokenController{
     
     static async CompareToken(req, res){
         const secret = process.env.SECRET;
-        const { code, jwt } = req.body;
+        const { code, jwtUser } = req.body;
 
-        if(!code || !jwt) 
+        if(!code || !jwtUser) 
             return res.status(400)
                 .send({ message: "Code or jwt not provided" })
 
-        var user = jwt.verify(jwt, secret);
+        var userJwt = jwt.verify(jwtUser, secret);
+        var userToken = await Token.findOne({ "user": userJwt.id });
 
         try {
-            if (await Token.findById(user.id).code == await bcrypt.hash(code, 12))
+            if (await bcrypt.compare(code.toString(), userToken.code) && userToken.expires - Date.now() > 0)
             {
-                await User.findByIdAndUpdate(user.id, { validated: true });
-                await Token.deleteMany({ "user": user.id });
+                await User.findByIdAndUpdate(userJwt.id, { validated: true });
+                await Token.deleteMany({ "user": userJwt.id });
                 return res.status(200)
                     .send({ message: "User validated successfully" })
             }
@@ -60,7 +86,7 @@ class TokenController{
                 .send({ message: "Invalid code" })
         } catch (error) {
             res.status(500)
-                .send({ message: error });
+                .send({ message: error.toString() });
         }
     } 
 }
