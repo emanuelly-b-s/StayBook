@@ -9,11 +9,10 @@ export default function Cadastro(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const { addUser, reset } = useContext(usersContext);
+    const { validateData, reset } = useContext(usersContext);
 
     function RegisterUser() {
-        // var res = addUser();
-        // if (res != null)
+        if(validateData(username, email, password, confirmPassword))
             props.navigation.navigate("confirm");
     }
 

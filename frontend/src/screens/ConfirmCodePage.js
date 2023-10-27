@@ -2,7 +2,6 @@ import { View, Image, Text, TouchableOpacity } from "react-native";
 import { styles } from "../../Styles";
 import { useContext, useState, useRef } from "react";
 import { usersContext } from "../../context/UserContext";
-import StyledInput from "../components/StyledInput";
 import UnderlineInput from "../components/UnderlineInput";
 
 export default function ConfirmCode(props) {
@@ -12,7 +11,7 @@ export default function ConfirmCode(props) {
     const [fourthNum, setFourthNum] = useState("");
     const [fifthNum, setFifthNum] = useState("");
 
-    const { addUser, reset } = useContext(usersContext);
+    const { reset } = useContext(usersContext);
 
     const ref_input2 = useRef();
     const ref_input3 = useRef();

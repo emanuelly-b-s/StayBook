@@ -11,17 +11,14 @@ export const UsersProvider = ({ children }) => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    function validateData() {
-        if (password === confirmPassword && password.length > 3) {
+    function validateData(username, email, password, confirmpassword) {
+        if (password === confirmpassword && validatePassword(password)) {
             console.log("password");
             if (username.length > 3 && username.length < 16) {
                 console.log("username");
-                if (age > 16 && age < 100) {
-                    console.log("username")
-                    if (validateEmail(email)) {
-                        console.log("email")
-                        return true;
-                    }
+                if (validateEmail(email)) {
+                    console.log("email")
+                    return true;
                 }
             }
         }
@@ -33,6 +30,13 @@ export const UsersProvider = ({ children }) => {
             .toLowerCase()
             .match(
                 /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
+
+    const validatePassword = (password) => {
+        return String(password)
+            .match(
+                /^(?=.*[\d])(?=.*[!@#$%^&*])[\w!@#$%^&*]{6,16}$/
             );
     };
 
@@ -84,7 +88,9 @@ export const UsersProvider = ({ children }) => {
             reset,
             addUser,
             validateData,
-            verifyLogin
+            verifyLogin,
+            validateEmail,
+            validatePassword
         }}>
             {children}
         </usersContext.Provider>

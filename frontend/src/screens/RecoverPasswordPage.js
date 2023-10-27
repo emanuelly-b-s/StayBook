@@ -1,13 +1,15 @@
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import { styles } from "../../Styles";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import StyledInput from "../components/StyledInput";
+import { usersContext } from "../../context/UserContext";
 
 export default function RecoverPassword(props) {
     const [email, setEmail] = useState("");
+    const {validateEmail} = useContext(usersContext);
 
     function recoverReq() {
-        if(email.length > 0)
+        if(validateEmail(email))
             props.navigation.navigate('redefine');
     }
 

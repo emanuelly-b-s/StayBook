@@ -19,6 +19,7 @@ export default function HomePage(params) {
 const style = StyleSheet.create({
     main: {
         alignItems: "center",
-        gap: 10
+        gap: 10,
+        paddingTop: 90
     }
 })
