@@ -10,6 +10,9 @@ import RedefinePassword from './src/screens/RedefinePasswordPage';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import ChatPage from './src/screens/ChatPage';
+import HistoryPage from './src/screens/HistoryPage';
+import FavoritesPage from './src/screens/FavoritesPage';
 library.add(fas)  ;
 
 export default function App() {
@@ -28,6 +31,9 @@ export default function App() {
           <Stack.Screen name="redefine" options={{ headerShown: false }} component={RedefinePassword} />
           <Stack.Screen name="confirm" options={{ headerShown: false }} component={ConfirmCode} />
           <Stack.Screen name="login" options={{ headerShown: false }} component={Login} />
+          <Stack.Screen name="chat" options={{ headerShown: false }} component={ChatPage} />
+          <Stack.Screen name="history" options={{ headerShown: false }} component={HistoryPage} />
+          <Stack.Screen name="favorites" options={{ headerShown: false }} component={FavoritesPage} />
         </Stack.Navigator>
       </UsersProvider>
     </NavigationContainer>

@@ -3,7 +3,7 @@ import { Image, Pressable, StyleSheet, View } from "react-native";
 import logo from "../../assets/StayBook Icon.png"
 import NavContent from "./NavContent";
 
-export default function Nav ( params ) {
+export default function Nav ( props ) {
     const [modalVisible, setModalVisible] = useState(false);
 
     const setVisible = () => {
@@ -13,13 +13,13 @@ export default function Nav ( params ) {
     return(
         <View style={styles.NavContainer}>
             <Image source={logo} style={styles.IconStayBook} />
-            <Pressable style={styles.BurgerButtom} 
+            { !modalVisible && <Pressable style={styles.BurgerButtom} 
                 onPress={() => setVisible()}>
                 <View style={styles.BurgerItem}></View>
                 <View style={styles.BurgerItem}></View>
                 <View style={styles.BurgerItem}></View>
-            </Pressable>
-            <NavContent visible={modalVisible}/>
+            </Pressable> }
+            <NavContent visible={modalVisible} set={setModalVisible} navTo={props.navTo}/>
         </View>
     )
 }

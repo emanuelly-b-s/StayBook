@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 
@@ -5,25 +6,32 @@ export default function NavContent(props) {
     return (
         <View style={styles.centeredView}>
             <Modal
-                animationType="slide"
+                animationType="none"
                 transparent={true}
                 visible={props.visible}>
+                <Pressable onPress={() => props.set(false)} style={{zIndex: 2}}>
+                    <FontAwesomeIcon icon="fa-solid fa-xmark" size={50} style={styles.resize}/>
+                </Pressable>
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <Pressable
                             style={[styles.button, styles.buttonClose]}>
-                            <Text style={styles.textStyle}>Chat</Text>
+                            <Text style={styles.textStyle}
+                            onPress={() => props.navTo("chat")}>Chat</Text>
                         </Pressable>
                         <Pressable
-                            style={[styles.button, styles.buttonClose]}>
-                            <Text style={styles.textStyle}>Historic</Text>
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => props.navTo("history")}>
+                            <Text style={styles.textStyle}>History</Text>
                         </Pressable>
                         <Pressable
-                            style={[styles.button, styles.buttonClose]}>
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => props.navTo("favorites")}>
                             <Text style={styles.textStyle}>Favorites</Text>
                         </Pressable>
                         <Pressable
-                            style={[styles.button, styles.buttonClose]}>
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => console.log("oi")}>
                             <Text style={styles.textStyle}>Logoff</Text>
                         </Pressable>
                     </View>
@@ -41,6 +49,12 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         position: 'absolute',
     },
+    resize: {
+        position: "absolute",
+        top: 14,
+        left: 6,
+        color: "white"
+    }, 
     modalView: {
         backgroundColor: 'black',
         gap: 10,
@@ -66,8 +80,8 @@ const styles = StyleSheet.create({
     },
     buttonClose: {
         backgroundColor: '#876431',
-        minWidth: 400,
-        maxWidth: 400,
+        minWidth: 200,
+        maxWidth: 200,
         borderRadius: 10,
     },
     textStyle: {
