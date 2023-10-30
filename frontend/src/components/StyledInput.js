@@ -9,7 +9,8 @@ export default function StyledInput(props) {
                 placeholder={props.name} 
                 value={props.value} 
                 onChangeText={props.set}
-                keyboardType="email"    
+                keyboardType="email"
+                secureTextEntry={props.isSecure?true: false}
             ></TextInput>
         </View>
     )

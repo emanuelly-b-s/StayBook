@@ -14,6 +14,7 @@ import ChatPage from './src/screens/ChatPage';
 import HistoryPage from './src/screens/HistoryPage';
 import FavoritesPage from './src/screens/FavoritesPage';
 import RoomPage from './src/screens/RoomPage';
+
 library.add(fas)  ;
 
 export default function App() {
@@ -26,8 +27,8 @@ export default function App() {
           headerStyle: { elevation: 0 },
           cardStyle: { backgroundColor: '#000' }
         }}>
-          <Stack.Screen name="room" options={{ headerShown: false }} component={RoomPage} />
           <Stack.Screen name="home" options={{ headerShown: false }} component={HomePage} />
+          <Stack.Screen name="room" options={{ headerShown: false }} component={RoomPage} />
           <Stack.Screen name="cadastro" options={{ headerShown: false }} component={Cadastro} />
           <Stack.Screen name="recover" options={{ headerShown: false }} component={RecoverPassword} />
           <Stack.Screen name="redefine" options={{ headerShown: false }} component={RedefinePassword} />

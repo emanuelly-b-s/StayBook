@@ -1,15 +1,13 @@
 import { createContext, useEffect, useState } from "react";
+import axios from 'axios';
+import { jwtDecode } from "jwt-decode";
 
 export const usersContext = createContext({});
 
 usersContext.displayName = "UsersContext";
 
 export const UsersProvider = ({ children }) => {
-    const [users, setUsers] = useState([]);
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const baseUrl = 'http://localhost:8080'
 
     function validateData(username, email, password, confirmpassword) {
         if (password === confirmpassword && validatePassword(password)) {
@@ -34,63 +32,43 @@ export const UsersProvider = ({ children }) => {
     };
 
     const validatePassword = (password) => {
+        console.log(password)
         return String(password)
             .match(
                 /^(?=.*[\d])(?=.*[!@#$%^&*])[\w!@#$%^&*]{6,16}$/
             );
     };
 
-    function addUser() {
-        if (validateData()) {
-            var user = {
-                username: username,
-                age: age,
-                gender: gender,
-                email: email,
-                password: password
-            }
-
-            setUsers([...users, user]);
-            reset();
-
-            return user;
-        }
-        return null;
+    const RegisterUser = async (username, email, password) => {
+        console.log("response.data")
+        const response = await axios.post(`${baseUrl}/api/auth/register`, {
+            username,
+            email,
+            password,
+        });
+        console.log(response.data)
+        if(response.data)
+            return response;
     }
 
-    const reset = () => {
-        setUsername("");
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-    }
-
-    const verifyLogin = (email, password) => {
-        var res = false;
-
-        users.map(user => {
-            console.log(user);
-            if (user.email === email && user.password === password) {
-                res = true;
-            }
-        })
-
-        return res;
+    const ValidateUser = async (email, password) => {
+        const response = await axios.post(`${baseUrl}/api/auth/login`, {
+            email,
+            password,
+        });
+        
+        console.log(response.data)
+        if(response.data)
+            return response;
     }
 
     return (
         <usersContext.Provider value={{
-            users, setUsers,
-            username, setUsername,
-            email, setEmail,
-            password, setPassword,
-            confirmPassword, setConfirmPassword,
-            reset,
-            addUser,
-            validateData,
-            verifyLogin,
             validateEmail,
-            validatePassword
+            validatePassword,
+            validateData,
+            RegisterUser,
+            ValidateUser
         }}>
             {children}
         </usersContext.Provider>

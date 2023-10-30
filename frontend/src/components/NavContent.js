@@ -3,10 +3,7 @@ import React, { useState } from 'react';
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-
-
 export default function NavContent(props) {
-
     const navigation = useNavigation();
 
     const navTo = (screen) => {
