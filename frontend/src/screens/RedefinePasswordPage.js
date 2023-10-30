@@ -7,10 +7,11 @@ import StyledInput from "../components/StyledInput";
 export default function RedefinePassword(props) {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const {validatePassword} = useContext(usersContext);
 
     function ToLogin() {
-        if(password === confirmPassword && password.length > 3 && confirmPassword.length > 3)
-        props.navigation.navigate("login");
+        if(password === confirmPassword && validatePassword(password))
+            props.navigation.navigate("login");
     }
 
     return (

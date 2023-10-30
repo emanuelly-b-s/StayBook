@@ -1,15 +1,28 @@
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { Image, Pressable, StyleSheet, View } from "react-native";
 import logo from "../../assets/StayBook Icon.png"
+import NavContent from "./NavContent";
 
-export default function Nav ( params ) {
+export default function Nav ( props ) {
+    const [modalVisible, setModalVisible] = useState(false);
+
+
+    const setVisible = () => {
+        setModalVisible(!modalVisible);
+    }
+
+
+
     return(
         <View style={styles.NavContainer}>
             <Image source={logo} style={styles.IconStayBook} />
-            <Pressable style={styles.BurgerButtom}>
+            { !modalVisible && <Pressable style={styles.BurgerButtom} 
+                onPress={() => setVisible()}>
                 <View style={styles.BurgerItem}></View>
                 <View style={styles.BurgerItem}></View>
                 <View style={styles.BurgerItem}></View>
-            </Pressable>
+            </Pressable> }
+            <NavContent visible={modalVisible} set={setModalVisible} />
         </View>
     )
 }

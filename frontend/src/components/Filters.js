@@ -12,7 +12,7 @@ export default function Filters(params) {
             <View style={styles.NavContainer}>
                 <Pressable style={styles.FilterButtom}>
                     <View style={styles.TopSearchBar}></View>
-                    <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" style={{ color: "#000000", }} />
+                    <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" style={styles.SearchIcon} />
                 </Pressable>
             </View>
         )
@@ -48,16 +48,17 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: 7
+        gap:15
     },
     SearchIcon: {
         width: 30,
         height: 30,
-        color: 'white'
+        color: 'white',
     },
     TopSearchBar: {
-        width: 100,
-        height: 10,
-        color: 'white'
+        width: 70,
+        height: 3,
+        borderRadius:20,
+        backgroundColor: 'white'
     }
 })
