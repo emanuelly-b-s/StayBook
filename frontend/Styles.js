@@ -1,6 +1,11 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+    Container: {
+        justifyContent: "center", 
+        alignItems:"center",
+
+    },  
     title: {
         color: '#fff',
         fontSize: 34,
@@ -72,7 +77,87 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 22,
         fontWeight: "600",
+    },
+    SwipperConatiner: {
+        gap:10,
+    },
+    image: {
+        width: 350,
+        height: 300,
+        resizeMode: "cover",
+        borderRadius:20
+
+
+    },
+    main:{
+        paddingLeft: 20,
+        paddingRight: 20,
+        top: 80,
+    },
+    description: {
+        marginTop: 10,
+        color: "white",
+        fontSize: 15,
+        alignItems: "center",
+        flexShrink:1,
+        textAlign: "justify",
+        maxWidth:"100vw",
+        padding:10
+    },
+    CardContainer: {
+        width:360,
+        height:340,
+        padding:15,
+        borderRadius:20,
+        backgroundColor: "#876431"
+    },
+    Image: {
+        width: 330,
+        height: 210,
+        borderRadius:15,
+        shadowColor: "black",
+        shadowOpacity:100,
+        shadowOffset: { width: 100, height: 100 }
+    },
+    AvaliationContainer: {
+        flexDirection: 'row',
+        gap:2,
+        alignItems: 'center',
+        paddingTop: 5,
+        paddingRight: 10
+    },
+    DescriptionContainer: {
+        width:270,
+        height:70
+    },
+    HeaderCardContainer: {
+        paddingTop:2,
+        flexDirection: 'row',
+        gap:2,
+        alignItems: 'Start',
+        justifyContent: "space-between"
+    },
+    title: {
+        fontWeight: "bold",
+        fontSize:18,
+        color:"#fff"
+    },
+    local: {
+        fontWeight: "600",
+        color:"#fff"
+    },
+    price :{ 
+        fontWeight: "bold",
+        fontSize:20,
+    },
+    Line: {
+        height:2,
+        width: "70vw",
+        backgroundColor: "#fff",
+        marginTop:20,
+        marginBottom:20
     }
+
 });
 
 export { styles };

@@ -1,8 +1,8 @@
 import { Image, View,StyleSheet, Text } from "react-native"
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import { faMugSaucer } from '@fortawesome/free-solid-svg-icons/faMugSaucer'
-import { BoxShadow } from  'react-native-shadow'
-
+import { BoxShadow } from  'react-native-shadow';
+import { styles } from "../../Styles";
 export default function RoomCard(params) {
     
     const imgShadow = {
@@ -41,52 +41,3 @@ export default function RoomCard(params) {
     )
 }
 
-
-const styles = StyleSheet.create({
-    CardContainer: {
-        width:360,
-        height:340,
-        padding:15,
-        borderRadius:20,
-        backgroundColor: "#876431"
-    },
-    Image: {
-        width: 330,
-        height: 210,
-        borderRadius:15,
-        shadowColor: "black",
-        shadowOpacity:100,
-        shadowOffset: { width: 100, height: 100 }
-    },
-    AvaliationContainer: {
-        flexDirection: 'row',
-        gap:2,
-        alignItems: 'center',
-        paddingTop: 5,
-        paddingRight: 10
-    },
-    DescriptionContainer: {
-        width:270,
-        height:70
-    },
-    HeaderCardContainer: {
-        paddingTop:2,
-        flexDirection: 'row',
-        gap:2,
-        alignItems: 'Start',
-        justifyContent: "space-between"
-    },
-    title: {
-        fontWeight: "bold",
-        fontSize:18,
-        color:"#fff"
-    },
-    local: {
-        fontWeight: "600",
-        color:"#fff"
-    },
-    price :{ 
-        fontWeight: "bold",
-        fontSize:20,
-    }
-})

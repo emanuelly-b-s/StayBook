@@ -1,27 +1,16 @@
 const mongoose = require('mongoose');
+const Room = require('./Room');
 
-const Booking = mongoose.model('Booking', {
-
-    period: {
-        startDate: Date,
-        end_date: Date
-    },
-    user: {
-        name: String,
-        phone_number: String,
-        cpf: String,
-        date_birth: Date,
-        email: String
-    },
-    payment: {
-        booking_amount: Number,
-        form_payment: String,
-    },
-    dependents: {
-        numberChildren: Number,
-        numberAdults: Number
+const Booking = mongoose.model('Booking', {    
+    startDate: Date,
+    endDate: Date,
+    user: String,
+    numberChildren: Number,
+    numberAdults: Number,
+    rooms: {
+        type:[String],
+        required: true
     }
-
 });
 
 module.exports = Booking;
