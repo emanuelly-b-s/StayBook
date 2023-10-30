@@ -20,7 +20,7 @@ export default function App() {
   const Stack = createStackNavigator();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer >
       <UsersProvider>
         <Stack.Navigator screenOptions={{
           headerStyle: { elevation: 0 },
