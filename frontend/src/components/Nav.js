@@ -6,9 +6,12 @@ import NavContent from "./NavContent";
 export default function Nav ( props ) {
     const [modalVisible, setModalVisible] = useState(false);
 
+
     const setVisible = () => {
         setModalVisible(!modalVisible);
     }
+
+
 
     return(
         <View style={styles.NavContainer}>
@@ -19,7 +22,7 @@ export default function Nav ( props ) {
                 <View style={styles.BurgerItem}></View>
                 <View style={styles.BurgerItem}></View>
             </Pressable> }
-            <NavContent visible={modalVisible} set={setModalVisible} navTo={props.navTo}/>
+            <NavContent visible={modalVisible} set={setModalVisible} />
         </View>
     )
 }

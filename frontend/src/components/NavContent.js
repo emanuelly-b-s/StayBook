@@ -1,8 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React, { useState } from 'react';
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
+
 
 export default function NavContent(props) {
+
+    const navigation = useNavigation();
+
+    const navTo = (screen) => {
+        navigation.navigate(screen);
+    }
+
     return (
         <View style={styles.centeredView}>
             <Modal
@@ -17,16 +27,16 @@ export default function NavContent(props) {
                         <Pressable
                             style={[styles.button, styles.buttonClose]}>
                             <Text style={styles.textStyle}
-                            onPress={() => props.navTo("chat")}>Chat</Text>
+                            onPress={() => navTo("chat")}>Chat</Text>
                         </Pressable>
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
-                            onPress={() => props.navTo("history")}>
+                            onPress={() => navTo("history")}>
                             <Text style={styles.textStyle}>History</Text>
                         </Pressable>
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
-                            onPress={() => props.navTo("favorites")}>
+                            onPress={() => navTo("favorites")}>
                             <Text style={styles.textStyle}>Favorites</Text>
                         </Pressable>
                         <Pressable
