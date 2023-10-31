@@ -3,15 +3,14 @@ const Hotel = require('../models/Hotel');
 
 class HotelController {
     static async Create(req, res) {
-        const { description, email, rate, tags, contact, image, location, title } = req.body;
+        const { description, rate, tags, contact, image, location, title } = req.body;
 
-        if (!description || !image || !email || !tags || !contact || !location || !title)
+        if (!description || !image || !tags || !contact || !location || !title)
             return res.status(400).send({ message: "Mandatory information not provided" });
 
         const hotel = new Hotel({
             title: title,
             description: description,
-            email: email,
             rate: rate,
             tags: tags,
             contact: contact,

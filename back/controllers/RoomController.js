@@ -8,28 +8,34 @@ class RoomController {
             image, available, title  } = req.body;
 
         if (!capacity || !doubleBed || !singleBed || !price || !rate || 
-            !hotel || !description || !image || !available || !category || !title)
+            !hotel || !description || !image || !available || !category 
+            || !title)
             return res.status(400).send({ message: "Mandatory information not provided" });
 
-        const roomCode = await Room.count() + 1;
+        const roomCode = (await Room.count() + 1).toString();
 
         const room = new Room({
-            capacity: capacity,
+            title: title,
             code: roomCode, 
+            capacity: capacity,
             doubleBed: doubleBed,
             singleBed: singleBed,
-            title: title,
             price: price,
             rate: rate,
             hotel: hotel,
             description: description,
+            category: category,
             image: image,
             available: available
         });
 
         try {
             await room.save()
-            await Hotel.findByIdAndUpdate(hotel, { $push: { rooms: room } })
+            try {
+                await Hotel.findByIdAndUpdate(hotel, { "$push": { rooms: room } });
+            } catch (error) {
+                return res.status(500).send({ error: error });    
+            }
             return res.status(201).send({ message: "Room created successfully" });
         } catch (error) {
             return res.status(500).send({ error: "Failed" });

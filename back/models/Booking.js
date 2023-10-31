@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
-const Room = require('./Room');
 
 const Booking = mongoose.model('Booking', {    
-    startDate: Date,
-    endDate: Date,
+    startDate: String,
+    endDate: String,
     user: String,
     numberChildren: Number,
     numberAdults: Number,
