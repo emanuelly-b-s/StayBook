@@ -9,8 +9,8 @@ const Hotel = mongoose.model('Hotel', {
         type:[String],
         required: true
     },
-    rooms : {
-        type:[String],
+    rooms: {
+        type:[Room.schema],
         required: false
     },      
     contact: {

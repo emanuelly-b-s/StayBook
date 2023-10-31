@@ -59,7 +59,7 @@
 } 
 
 // Cria um hotel
-// http://localhost:8080/api/room/hotel/
+// http://localhost:8080/api/hotel/
 {
     "title": "hotel bala",
     "description": "lorem",
@@ -71,10 +71,10 @@
 }
 
 // Retorna todos os hoteis
-// http://localhost:8080/api/room/hotel/getAll {}
+// http://localhost:8080/api/hotel/getAll {}
 
 // Retorna os hoteis dentro de um range específico
-// http://localhost:8080/api/room/hotel/get 
+// http://localhost:8080/api/hotel/get 
 {
     "start": 0,
     "end": 10

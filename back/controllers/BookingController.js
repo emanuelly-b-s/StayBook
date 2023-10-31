@@ -1,4 +1,6 @@
 const Room = require('../models/Room');
+const Booking = require('../models/Booking');
+const jwt = require('jsonwebtoken');
 
 class BookingController {
     static async Create(req, res) {
