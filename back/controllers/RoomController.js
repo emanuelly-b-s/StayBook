@@ -13,7 +13,7 @@ class RoomController {
             return res.status(400).send({ message: "Mandatory information not provided" });
 
         const roomCode = (await Room.count() + 1).toString();
-
+        const queryHotel = await Hotel.findById(hotel);
         const room = new Room({
             title: title,
             code: roomCode, 
@@ -22,6 +22,7 @@ class RoomController {
             singleBed: singleBed,
             price: price,
             rate: rate,
+            location: queryHotel.location,
             hotel: hotel,
             description: description,
             category: category,

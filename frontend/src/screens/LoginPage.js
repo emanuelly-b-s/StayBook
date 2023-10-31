@@ -46,7 +46,7 @@ export default function Login(props) {
         <View style={styles.center}>
             <Image source={require('../../assets/logo.png')} style={{ width: 260, height: 160 }} />
             <View style={styles.form}>
-                <StyledInput name={"Email"} value={email} set={setEmail} />
+                <StyledInput name={"Email"} type={"email-address"} value={email} set={setEmail} />
                 <StyledInput isSecure={true} name={"Password"} value={password} set={setPassword} />
             </View>
             <View style={styles.alignLink}>
