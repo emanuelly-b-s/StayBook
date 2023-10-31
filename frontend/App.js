@@ -14,8 +14,9 @@ import ChatPage from './src/screens/ChatPage';
 import HistoryPage from './src/screens/HistoryPage';
 import FavoritesPage from './src/screens/FavoritesPage';
 import RoomPage from './src/screens/RoomPage';
+import RegisterRoom from './src/screens/RegisterRoomPage';
 
-library.add(fas)  ;
+library.add(fas);
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -27,6 +28,7 @@ export default function App() {
           headerStyle: { elevation: 0 },
           cardStyle: { backgroundColor: '#000' }
         }}>
+          <Stack.Screen name="register-room" options={{ headerShown: false }} component={RegisterRoom} />
           <Stack.Screen name="home" options={{ headerShown: false }} component={HomePage} />
           <Stack.Screen name="room" options={{ headerShown: false }} component={RoomPage} />
           <Stack.Screen name="cadastro" options={{ headerShown: false }} component={Cadastro} />

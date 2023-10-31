@@ -12,11 +12,11 @@ const styles = StyleSheet.create({
     },
     form: {
         gap: '1.5rem',
-        marginTop: '3rem',
-        marginBottom: '1rem',
+        marginTop: 45,
+        marginBottom: 12,
     },
     center: {
-        marginTop: '3rem',
+        marginTop: 45,
         gap: 10,
         flexDirection: 'column',
         alignItems: 'center',
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         padding: '.2rem',
         backgroundColor: '#000',
         fontSize: '1.2rem',
-        width: '16rem',
+        width: 240,
     },
     wrapInput: {
         backgroundColor: '#fff',

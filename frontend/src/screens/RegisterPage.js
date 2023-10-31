@@ -28,7 +28,7 @@ export default function Cadastro(props) {
             <Image source={require('../../assets/logo.png')} style={{ width: 260, height: 160 }} />
             <View style={styles.form}>
                 <StyledInput name={"Username"} value={username} set={setUsername} />
-                <StyledInput name={"Email"} value={email} set={setEmail} />
+                <StyledInput name={"Email"} type={"email-address"} value={email} set={setEmail} />
                 <StyledInput isSecure={true} name={"Password"} value={password} set={setPassword} />
                 <StyledInput isSecure={true} name={"Confirm Password"} value={confirmPassword} set={setConfirmPassword} />
             </View>
