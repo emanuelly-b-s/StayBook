@@ -10,6 +10,10 @@ const Room = mongoose.model('Room', {
     rate: Number,
     hotel: String,
     description: String,
+    location: {
+        type:[String],
+        required: false
+    },
     category: {
         type:[String],
         required: true
