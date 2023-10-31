@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Room = require('./Room');
 
 const Hotel = mongoose.model('Hotel', {
+    title: String,
     description: String,
     email: String,
     rate: Number,

@@ -54,15 +54,14 @@ class AuthController{
             const secret = process.env.SECRET;
             const token = jwt.sign(
                 {
-                    id: user._id,
-                    valid: user.validated
+                    id: user._id
                 },
                 secret,
                 {
                     expiresIn: '2 days'
                 }
             );
-            return res.status(200).send({ token: token })
+            return res.status(200).send({ token: token, valid: user.validated })
         } catch (error) {
             return res.status(500).send({ message: "Something failed" })
         }

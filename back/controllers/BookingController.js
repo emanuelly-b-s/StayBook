@@ -17,17 +17,26 @@ class BookingController {
         });
 
         try {
-            await Room.updateMany({'_id': { $in: rooms }}, { $set: {available: false} })
+            await Room.updateMany({'code': { $in: rooms }}, { $set: {available: false} })
         } catch (error) {
             return res.status(500).send({ error: "Failed" });
         }   
 
         try {
             await booking.save()
-            return res.status(201).send({ message: "Hotel created successfully" });
+            return res.status(201).send({ message: "Booking created successfully" });
         } catch (error) {
             return res.status(500).send({ error: "Failed" });
         };
+    }
+
+    static async GetAll(req, res) {
+        try {
+            var bookings = await Booking.find();
+            return res.status(200).send(bookings);
+        } catch (error) {
+            return res.status(500).send({ error: "Failed" });
+        }
     }
 }
 
