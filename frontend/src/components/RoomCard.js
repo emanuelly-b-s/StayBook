@@ -7,8 +7,7 @@ import { styles } from "../../Styles";
 
 export default function RoomCard( params ) {
     console.log(params);
-    const { image, title, local, avaliation, price } = params.room;
-
+    const { image, title, location, rate, price } = params.room;
 
     const imgShadow = {
         width: 330,
@@ -28,17 +27,17 @@ export default function RoomCard( params ) {
             <BoxShadow setting={imgShadow} >
                 <Image 
                     style={styles.Image}
-                    source={{uri: image}}
+                    source={{uri: image[0]}}
                 />
             </BoxShadow>
             <View style={styles.HeaderCardContainer}>
                 <View style={styles.DescriptionContainer}>
                     <Text style={styles.title}>{title}</Text>
-                    <Text style={styles.local}>{local}</Text>
+                    <Text style={styles.local}>{location}</Text>
                 </View>
                 <View style={styles.AvaliationContainer}>
                     <FontAwesomeIcon icon="fa-solid fa-star" />
-                    <Text>{avaliation}</Text>
+                    <Text>{rate}</Text>
                 </View>
             </View>
             <Text style={styles.price} >R$ {price}</Text>

@@ -3,10 +3,15 @@ import Nav from "../components/Nav";
 import { styles } from "../../Styles";
 import { SwiperFlatList } from 'react-native-swiper-flatlist';
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
+import { useEffect } from "react";
 
 export default function RoomPage(params) {
     
-    const images = ["https://media-cdn.tripadvisor.com/media/photo-s/16/1a/ea/54/hotel-presidente-4s.jpg", "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/22/25/ce/ea/kingsford-hotel-manila.jpg?w=1200&h=-1&s=1"];
+    const { title, description, image, price, rate, location } = params.route.params.room;
+
+    useEffect(() => {
+        console.log(params.route.params.room);
+    },[])
 
 
     const imagesRender = () => {
@@ -18,7 +23,7 @@ export default function RoomPage(params) {
                         autoplay
                         autoplayLoop
                         showPagination
-                        data={images}
+                        data={image}
                         renderItem={({ item }) => (
                             <>
                                 <View>
@@ -40,15 +45,15 @@ export default function RoomPage(params) {
                 {imagesRender()}
                 <View style={styles.Container}>
                     <View style={styles.info}>
-                        <Text style={styles.title}>Um hotel em algum lugar do mundo</Text>
+                        <Text style={styles.title}>{title}</Text>
                         <View style={styles.AvaliationContainer}>
                             <FontAwesomeIcon icon="fa-solid fa-star" style={{color:"white"}} />
-                            <Text style={styles.description}>4.50</Text>
+                            <Text style={styles.description}>{rate}</Text>
                         </View>
                     </View>
-                    <Text style={styles.description}>São Luís do Purunã</Text>
+                    <Text style={styles.description}>{location}</Text>
                     <View style={styles.Line} />
-                    <Text style={styles.description}>jasçldkfjasçldkfjaçsldkfjjasçldkfjasçldkfjaçsldkfjjasçldkfjasçldkfjaçsldkfjjasçldkfjasçldkfjaçsldkfjjasçldkfjasçldkfjaçsldkfjjasçldkfjasçldkfjaçsldkfj</Text>
+                    <Text style={styles.description}>{description}</Text>
                 </View>
             </View>
         </>
