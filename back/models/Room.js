@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
 const Room = mongoose.model('Room', {
+    title: String,
+    code: String,
     capacity: Number,
     doubleBed: Number,
     singleBed: Number,

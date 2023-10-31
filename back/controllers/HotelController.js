@@ -3,12 +3,13 @@ const Hotel = require('../models/Hotel');
 
 class HotelController {
     static async Create(req, res) {
-        const { description, email, rate, tags, contact, image, location } = req.body;
+        const { description, email, rate, tags, contact, image, location, title } = req.body;
 
-        if (!description || !image || !email || !tags || !contact || !location)
+        if (!description || !image || !email || !tags || !contact || !location || !title)
             return res.status(400).send({ message: "Mandatory information not provided" });
 
         const hotel = new Hotel({
+            title: title,
             description: description,
             email: email,
             rate: rate,
@@ -30,6 +31,21 @@ class HotelController {
         try {
             var hotels = await Hotel.find();
             return res.status(200).send(hotels);
+        } catch (error) {
+            return res.status(500).send({ error: "Failed" });
+        }
+    }
+
+    static async GetRange(req, res) {
+        const { start, end } = req.body;
+        
+        if (!start || !end)
+            return res.status(400).send({ message: "Mandatory information not provided" });
+
+        try {
+            var allhotels = await Hotel.find();
+            var filteredHotels = allhotels.slice(start, end);
+            return res.status(200).send(filteredHotels);
         } catch (error) {
             return res.status(500).send({ error: "Failed" });
         }
