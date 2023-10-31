@@ -3,6 +3,7 @@ import { styles } from "../../Styles";
 import { useContext, useState } from "react";
 import StyledInput from "../components/StyledInput";
 import { usersContext } from "../../context/UserContext";
+import AuthService from "../Services/Auth";
 
 export default function Login(props) {
     const [email, setEmail] = useState("");
@@ -10,10 +11,16 @@ export default function Login(props) {
     const {ValidateUser} = useContext(usersContext);
 
     function ToLogin() {
-        const res = ValidateUser(email, password);
-         
-        if(res.data)
+        const body = {
+            email,
+            password
+        }
+        const res = AuthService.login(body);
+        console.log(res);
+        if(res.data.status === 200){
+            res.data.
             props.navigation.navigate("home");
+        }
     }
 
     return (

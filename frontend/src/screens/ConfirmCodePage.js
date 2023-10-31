@@ -1,4 +1,4 @@
-import { View, Image, Text, TouchableOpacity } from "react-native";
+import { View, Image, Text, TouchableOpacity, TouchableNativeFeedbackComponent } from "react-native";
 import { styles } from "../../Styles";
 import { useContext, useState, useRef } from "react";
 import { usersContext } from "../../context/UserContext";
@@ -18,6 +18,11 @@ export default function ConfirmCode(props) {
     const ref_input4 = useRef();
     const ref_input5 = useRef();
 
+    function Validate () {
+        const token = firstNum + secondNum + thirdNum + fourthNum + fifthNum;
+        console.log(token);
+    }
+
     function RegisterUser() {
         props.navigation.navigate("login");
     }
@@ -34,13 +39,13 @@ export default function ConfirmCode(props) {
                 Enter Code
             </Text>
             <View style={styles.space}>
-                <UnderlineInput keyboardType="numeric" value={firstNum} set={setFirstNum} nextRef={ref_input2} focus={true}></UnderlineInput>
+                <UnderlineInput value={firstNum} set={setFirstNum} nextRef={ref_input2} focus={true}></UnderlineInput>
                 <UnderlineInput value={secondNum} set={setSecondNum} thisRef={ref_input2} nextRef={ref_input3}></UnderlineInput>
                 <UnderlineInput value={thirdNum} set={setThirdNum} thisRef={ref_input3} nextRef={ref_input4}></UnderlineInput>
                 <UnderlineInput value={fourthNum} set={setFourthNum} thisRef={ref_input4} nextRef={ref_input5}></UnderlineInput>
                 <UnderlineInput value={fifthNum} set={setFifthNum} thisRef={ref_input5}></UnderlineInput>
             </View>
-            <TouchableOpacity style={styles.primaryButton} onPress={() => RegisterUser()}><Text style={styles.buttonText}>Confirm</Text></TouchableOpacity>
+            <TouchableOpacity style={styles.primaryButton} onPress={() => Validate()}><Text style={styles.buttonText}>Confirm</Text></TouchableOpacity>
             <TouchableOpacity style={styles.secondaryButton} onPress={() => BackToRegister()}><Text style={styles.buttonText}>Cancel</Text></TouchableOpacity>
         </View >
     )

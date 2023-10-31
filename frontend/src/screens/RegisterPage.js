@@ -14,7 +14,8 @@ export default function Cadastro(props) {
     function Register() {
         if (validateData(username, email, password, confirmPassword)) {
             const res = RegisterUser(username, email, password)
-            props.navigation.navigate("login");
+            if(res.data.status === 200)
+                props.navigation.navigate("login");
         }
     }
 
