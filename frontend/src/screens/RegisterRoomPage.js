@@ -19,7 +19,7 @@ export default function RegisterRoom(props) {
     const [doubleBed, setDoubleBed] = useState("");
     const [price, setprice] = useState("");
     const [description, setDescription] = useState("");
-    const [image, setImage] = useState([""]);
+    const [images, setImages] = useState([""]);
 
     const Register = async () => {
         const rate = Math.random() * 5;
@@ -36,35 +36,37 @@ export default function RegisterRoom(props) {
         if (hasDryer)
             category = [...category, "Dryer"];
 
+        console.log(title, capacity, doubleBed, singleBed, price, rate, hotel, description, category, images, available)
+
         const response = await axios.post(`${baseUrl}/api/room`, {
-            title,
-            capacity,
-            doubleBed,
-            singleBed,
-            price,
-            rate,
-            hotel,
-            description,
-            category,
-            image,
-            available
+            title: title,
+            capacity: capacity,
+            doubleBed: doubleBed,
+            singleBed: singleBed,
+            price: price,
+            rate: rate,
+            hotel: hotel,
+            description: description,
+            category: category,
+            image: images,
+            available: available
         });
 
         console.log(response.data);
     }
 
-    const updateFieldChanged = index => e => {
-        let newArr = [...image];
+    const updateFieldChanged = (index,e)  => {
+        let newArr = [...images];
         newArr[index] = e.target.value;
 
-        setImage(newArr);
+        setImages(newArr);
     }
 
     const addIndex = () => {
-        let newArr = [...image];
+        let newArr = [...images];
         newArr[newArr.length] = "";
 
-        setImage(newArr);
+        setImages(newArr);
     }
 
     return (
@@ -73,15 +75,15 @@ export default function RegisterRoom(props) {
             <View style={styles.form}>
                 <Pressable onPress={addIndex}>
                     <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-                        <Text style={styles.font}>Add Image</Text>
+                        <Text style={styles.font}>Add images</Text>
                         <FontAwesomeIcon icon="fa-solid fa-plus" style={{ color: "white" }} />
                     </View>
                 </Pressable>
                 <ScrollView style={{ maxHeight: 90 }}>
                     {
-                        image.map((image, index) => {
+                        images.map((image, index) => {
                             return (
-                                <TextInput style={[styles.textInput, { marginBottom: 5 }]} placeholder={"Image " + (index + 1)} key={index} value={image} onChangeText={updateFieldChanged(index)}></TextInput>
+                                <TextInput style={[styles.textInput, { marginBottom: 5 }]} placeholder={"images " + (index + 1)} key={index} value={image} onChange={(e) => updateFieldChanged(index, e)} ></TextInput>
                             );
                         })
                     }
