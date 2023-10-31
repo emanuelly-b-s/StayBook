@@ -1,8 +1,11 @@
 import { View, Image, Text, TouchableOpacity, TouchableNativeFeedbackComponent } from "react-native";
 import { styles } from "../../Styles";
-import { useContext, useState, useRef } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import { usersContext } from "../../context/UserContext";
 import UnderlineInput from "../components/UnderlineInput";
+import AuthService from "../Services/Auth";
+import { useNavigation } from "@react-navigation/native";
+import Login from "./LoginPage";
 
 export default function ConfirmCode(props) {
     const [firstNum, setFirstNum] = useState("");
@@ -10,17 +13,23 @@ export default function ConfirmCode(props) {
     const [thirdNum, setThirdNum] = useState("");
     const [fourthNum, setFourthNum] = useState("");
     const [fifthNum, setFifthNum] = useState("");
-
     const { reset } = useContext(usersContext);
-
     const ref_input2 = useRef();
     const ref_input3 = useRef();
     const ref_input4 = useRef();
     const ref_input5 = useRef();
 
-    function Validate () {
+    async function Validate () {
+        const navigator = useNavigation();
         const token = firstNum + secondNum + thirdNum + fourthNum + fifthNum;
-        console.log(token);
+        const body = {
+            code: token,
+            jwtUser: props.route.params.jwt
+        }
+        const res = await AuthService.verifyToken(body);
+        if(res.status === 200)
+            navigator.navigate('login')
+            
     }
 
     function RegisterUser() {

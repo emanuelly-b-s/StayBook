@@ -39,7 +39,7 @@ class AuthController{
 
     static async login(req, res){
         const { email, password } = req.body;
-
+        console.log(email + password)
         if(!email || !password) 
             return res.status(400)
                 .send({ message: "Email or password not provided" })

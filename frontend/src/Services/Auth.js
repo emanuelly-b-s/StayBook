@@ -1,20 +1,20 @@
 import axios from "axios";
 
 
+const baseUrl = "http://localhost:8080";
 class AuthService {
-    apiUrl = "http://localhost:8080/api/auth/";
-
+    
     static async login( body ) {
-        return axios.post(`${this.apiUrl}/login`, body)
+        return await axios.post(`${baseUrl}/api/auth/login`, body)
     }
     static async register( body ) {
-        return axios.post(`${this.apiUrl}/register`, body)
+        return await axios.post(`${baseUrl}/api/auth/register`, body)
     }
     static async sendToken( body ) {
-        return axios.post(`${this.apiUrl}/token/new`, body)
+        return await axios.post(`${baseUrl}/api/token/new`, body)
     }
     static async verifyToken( body ) {
-        return axios.post(`${this.apiUrl}/token/compare`, body)
+        return await axios.post(`${baseUrl}/api/token/compare`, body)
     }
 }
 

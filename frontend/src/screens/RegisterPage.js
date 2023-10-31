@@ -3,6 +3,7 @@ import { styles } from "../../Styles";
 import { useContext, useState } from "react";
 import { usersContext } from "../../context/UserContext";
 import StyledInput from "../components/StyledInput";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Cadastro(props) {
     const [username, setUsername] = useState("");
@@ -11,18 +12,27 @@ export default function Cadastro(props) {
     const [confirmPassword, setConfirmPassword] = useState("");
     const { validateData, reset, RegisterUser } = useContext(usersContext);
 
-    function Register() {
+    async function Register() {
         if (validateData(username, email, password, confirmPassword)) {
-            const res = RegisterUser(username, email, password)
-            if(res.data.status === 200)
+            const res = await RegisterUser(username, email, password)
+            
+            if(res.status === 200){
                 props.navigation.navigate("login");
+            }
         }
     }
 
     function ToLogin() {
-        reset();
-        props.navigation.navigate('login');
+        const navigator = useNavigation();
+        navigator.navigate('login');
     }
+
+
+    useEffect(() => {
+        const jwt = sessionStorage.getItem("token") ?? "";
+        if(jwt != "")
+            navigator.navigate("home");
+    })
 
     return (
         <View style={styles.center}>
