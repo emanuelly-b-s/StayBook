@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Image, Pressable, StyleSheet, View } from "react-native";
+import { Image, Pressable, StyleSheet, Touchable, TouchableOpacity, View } from "react-native";
 import logo from "../../assets/StayBook Icon.png"
 import NavContent from "./NavContent";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Nav ( props ) {
+    const navigateion = useNavigation();   
     const [modalVisible, setModalVisible] = useState(false);
 
 
@@ -11,11 +13,15 @@ export default function Nav ( props ) {
         setModalVisible(!modalVisible);
     }
 
-
+    const navigate = (screen) => {
+        navigateion.navigate(screen);
+    }
 
     return(
         <View style={styles.NavContainer}>
-            <Image source={logo} style={styles.IconStayBook} />
+            <TouchableOpacity onPress={() => navigate('home')}>
+                <Image source={logo} style={styles.IconStayBook} />
+            </TouchableOpacity>
             { !modalVisible && <Pressable style={styles.BurgerButtom} 
                 onPress={() => setVisible()}>
                 <View style={styles.BurgerItem}></View>

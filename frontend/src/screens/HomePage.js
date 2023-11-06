@@ -42,7 +42,9 @@ export default function HomePage(params) {
     return (
         <View style={style.main}>
             <Nav />
-                {renderCards()}
+                <View style={style.cardsContainer}>
+                    {renderCards()}
+                </View>
             <Filters />
         </View>
     )
@@ -52,10 +54,10 @@ const style = StyleSheet.create({
     main: {
         alignItems: "center",
         gap: 10,
-        paddingTop: 90
+        paddingTop: 75
     },
     cardsContainer: {
-        height: 500,
+        height: 515,
         overflow:"scroll",
         gap:10
     }

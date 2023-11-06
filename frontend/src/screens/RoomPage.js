@@ -13,6 +13,13 @@ export default function RoomPage(params) {
         console.log(params.route.params.room);
     },[])
 
+    const renderLocation = () => {
+        var result = "";
+        location.map((item, index) => {
+            result += index != 0 ? ` ${item}` : "";    
+        })
+        return result;
+    }
 
     const imagesRender = () => {
         return (
@@ -48,10 +55,10 @@ export default function RoomPage(params) {
                         <Text style={styles.title}>{title}</Text>
                         <View style={styles.AvaliationContainer}>
                             <FontAwesomeIcon icon="fa-solid fa-star" style={{color:"white"}} />
-                            <Text style={styles.description}>{rate}</Text>
+                            <Text style={[styles.description, styles.RoomPageDescription]}>{rate.toFixed(2)}</Text>
                         </View>
                     </View>
-                    <Text style={styles.description}>{location}</Text>
+                    <Text style={styles.description}>{renderLocation()}</Text>
                     <View style={styles.Line} />
                     <Text style={styles.description}>{description}</Text>
                 </View>

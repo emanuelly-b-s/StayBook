@@ -18,14 +18,17 @@ export default function ConfirmCode(props) {
     const ref_input3 = useRef();
     const ref_input4 = useRef();
     const ref_input5 = useRef();
+    const navigator = useNavigation();
 
     async function Validate () {
-        const navigator = useNavigation();
+        console.log("xalala");
+        console.log(navigator);
         const token = firstNum + secondNum + thirdNum + fourthNum + fifthNum;
         const body = {
             code: token,
             jwtUser: props.route.params.jwt
         }
+        console.log(body);
         const res = await AuthService.verifyToken(body);
         if(res.status === 200)
             navigator.navigate('login')

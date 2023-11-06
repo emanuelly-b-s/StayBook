@@ -8,6 +8,12 @@ export default function NavContent(props) {
 
     const navTo = (screen) => {
         navigation.navigate(screen);
+        props.set(false);
+    }
+
+    const logoff = () => {
+        sessionStorage.clear();
+        navTo("login");
     }
 
     return (
@@ -27,6 +33,11 @@ export default function NavContent(props) {
                             onPress={() => navTo("chat")}>Chat</Text>
                         </Pressable>
                         <Pressable
+                            style={[styles.button, styles.buttonClose]}>
+                            <Text style={styles.textStyle}
+                            onPress={() => navTo("register-room")}>Create Room</Text>
+                        </Pressable>
+                        <Pressable
                             style={[styles.button, styles.buttonClose]}
                             onPress={() => navTo("history")}>
                             <Text style={styles.textStyle}>History</Text>
@@ -38,7 +49,7 @@ export default function NavContent(props) {
                         </Pressable>
                         <Pressable
                             style={[styles.button, styles.buttonClose]}
-                            onPress={() => console.log("oi")}>
+                            onPress={() => logoff()}>
                             <Text style={styles.textStyle}>Logoff</Text>
                         </Pressable>
                     </View>

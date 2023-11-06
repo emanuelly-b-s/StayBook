@@ -37,7 +37,7 @@ export default function RoomCard( params ) {
                 </View>
                 <View style={styles.AvaliationContainer}>
                     <FontAwesomeIcon icon="fa-solid fa-star" />
-                    <Text>{rate}</Text>
+                    <Text>{rate.toFixed(2)}</Text>
                 </View>
             </View>
             <Text style={styles.price} >R$ {price}</Text>

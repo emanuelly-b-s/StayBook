@@ -104,6 +104,9 @@ const styles = StyleSheet.create({
         maxWidth:"100vw",
         padding:10
     },
+    RoomPageDescription: {
+        marginTop:0
+    },
     CardContainer: {
         width:360,
         height:340,

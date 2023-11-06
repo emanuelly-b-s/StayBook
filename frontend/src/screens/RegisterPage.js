@@ -1,6 +1,6 @@
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import { styles } from "../../Styles";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { usersContext } from "../../context/UserContext";
 import StyledInput from "../components/StyledInput";
 import { useNavigation } from "@react-navigation/native";
@@ -15,8 +15,8 @@ export default function Cadastro(props) {
     async function Register() {
         if (validateData(username, email, password, confirmPassword)) {
             const res = await RegisterUser(username, email, password)
-            
-            if(res.status === 200){
+            console.log(res);
+            if(res.status === 201){
                 props.navigation.navigate("login");
             }
         }
